@@ -1,0 +1,66 @@
+{
+  "name": "node-koa-realworld-starter-kit",
+  "version": "1.0.0",
+  "description": "conduit on koa.js",
+  "main": "index.js",
+  "repository": "git@github.com:dimonnwc3/node-koa-realworld-starter-kit.git",
+  "author": "Dmitrii Solovev <dimonnwc3@gmail.com>",
+  "license": "ISC",
+  "scripts": {
+    "start": "cross-env NODE_PATH=src node src/bin/server.js",
+    "start:dev": "cross-env NODE_PATH=src nodemon src/bin/server.js",
+    "lint": "standard | snazzy",
+    "lint:fix": "standard --fix | snazzy",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "cross-env": "^5.0.1",
+    "date-fns": "^1.28.3",
+    "dotenv": "^4.0.0",
+    "http-shutdown": "^1.2.0",
+    "humps": "^2.0.0",
+    "join-js": "^0.4.1",
+    "jsonfile": "^4.0.0",
+    "jsonwebtoken": "^7.4.0",
+    "koa": "^2.2.0",
+    "koa-body": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-ejs": "^4.1.0",
+    "koa-helmet": "^3.1.0",
+    "koa-jwt": "^3.2.1",
+    "koa-logger": "^3.0.1",
+    "koa-response-time": "^2.0.0",
+    "koa-router": "^7.1.1",
+    "koa-static": "^4.0.2",
+    "lodash": "^4.17.4",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0",
+    "yup": "^0.23.0"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "jest": "^20.0.4",
+    "nodemon": "1.14.6",
+    "pre-commit": "^1.2.2",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.2"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>[/\\\\](docs|node_modules)[/\\\\]"
+    ],
+    "bail": true,
+    "testMatch": [
+      "**/__tests__/**/*index.js?(x)",
+      "**/?(*.)(spec|test)index.js?(x)"
+    ],
+    "modulePaths": [
+      "src"
+    ]
+  }
+}

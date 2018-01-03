@@ -1,0 +1,8 @@
+<div id="container" class="container padding-top-60">
+    <div style="color: #0f0f0f">local uncommit files</div>
+    <% files.forEach(function(svg){%>
+    <div id="<%= svg.id%>" class="icon">
+        <%- svg.path%>
+    </div>
+    <%})%>
+</div>

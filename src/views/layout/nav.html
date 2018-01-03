@@ -1,0 +1,29 @@
+<div class="top-bar">
+    <div class="container">
+        <div class="file">
+            <form id="form" action="/api/upload" enctype="multipart/form-data" method="post">
+                <input id="file" type="file" name="files" multiple onchange="document.getElementById('form').submit()">
+            </form>
+        </div>
+        <div class="operation">
+            <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                <button id="remove" type="button" data-loading-text="Loading..."  autocomplete="off" class="btn btn-default">remove</button>
+                <button id="push" type="button" data-loading-text="Loading..."  autocomplete="off"  class="btn btn-default">push</button>
+                <!-- <button type="pushAndMerge" data-loading-text="Loading..."  autocomplete="off"  class="btn btn-default">push to dev</button> -->
+              </div>
+        </div>
+        <div class="color-disk">
+            <div class="btn-group btn-group-xs">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span id="selected" class="color blue"></span> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" id="dropdown">
+                    <li data-color="blue"><a href="#"><span class="color blue"></span></a></li>
+                    <li data-color="red"><a href="#"><span class="color red"></span></a></li>
+                    <li data-color="black"><a href="#"><span class="color black"></span></a></li>
+                    <li data-color="green"><a href="#"><span class="color green"></span></a></li>
+                </ul>
+              </div>
+        </div>
+    </div>
+</div>
