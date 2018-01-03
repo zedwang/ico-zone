@@ -1,4 +1,4 @@
-const {server} = require('config')
+const {server} = require('../config')
 const fs = require('fs')
 const path = require('path')
 
