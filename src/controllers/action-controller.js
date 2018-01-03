@@ -57,8 +57,8 @@ module.exports = {
       const cmd = `cp ${process.cwd()}/data/${id}.svg ${process.cwd()}/pentagon-entry/component/icon/svg/`
       await exec(cmd, option)
       // rename
-      const before = path.join(REPO,'/component/icon/svg',id + '.svg')
-      const after = path.join(REPO,'/component/icon/svg',svg)
+      const before = `${process.cwd()}/pentagon-entry/component/icon/svg/${id}.svg`
+      const after = `${process.cwd()}/pentagon-entry/component/icon/svg/${svg}`
       fs.renameSync(before, after)
     }
 
