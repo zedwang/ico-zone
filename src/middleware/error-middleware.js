@@ -1,5 +1,5 @@
-const errors = require('lib/errors')
-let constants = require('lib/constants')
+const errors = require('../lib/errors')
+let constants = require('../lib/constants')
 const _ = require('lodash')
 
 const http = require('http')
