@@ -11,7 +11,7 @@ const assets = require('koa-static')
 const responseTime = require('koa-response-time')
 const helmet = require('koa-helmet')
 const logger = require('koa-logger')
-const error = require('middleware/error-middleware')
+const error = require('./middleware/error-middleware')
 const bodyParser = require('koa-body')
 const routes = require('./routes')
 
