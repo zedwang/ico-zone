@@ -23,8 +23,12 @@ module.exports = {
     }
     for (let i = 0; i < files.length; i++) {
       let f = files[i]
+      console.log(path.basename(f.path, '.svg'))
+      console.log(f.name)
+    
       jsonStr[path.basename(f.path, '.svg')] = f.name
     }
+    console.log('mainifest', jsonStr)
     writeManifest(jsonStr)
     ctx.redirect('/')
   },
@@ -54,7 +58,10 @@ module.exports = {
     for (let i = 0; i < ids.length; i++) {
       let id = ids[i]
       const svg = manifest[id]
-      const src = path.join(REPO, `/data/${id}.svg`)
+      if (!svg) {
+        return console.error('file hash-value not written to the mainifest.json')
+      }
+      const src = path.join(server.data, `${id}.svg`)
       const target = path.join(REPO, `component/icon/svg/`)
       const cmd = `cp ${src} ${target}`
       console.log('copy cmd:', cmd)
@@ -73,7 +80,7 @@ module.exports = {
     await exec('git add ./', option)
     console.log('adde completed')
     // commit and push
-    await exec('git commit -m "add icon svg"', option)
+    await exec(`git commit -m "add ${manifest.values().join(',')}"`, option)
     console.log('commit completed')
     // push
     await exec('git push origin dev-icon', option)
@@ -83,7 +90,7 @@ module.exports = {
       fs.unlinkSync(path.join(server.data,id + '.svg'))
       delete manifest[id]
     })
-    writeManifest(manifest)
+    await writeManifest(manifest)
 
     if (query.isMerge) {
       console.log('merge remote branch')

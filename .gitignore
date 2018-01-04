@@ -10,7 +10,7 @@
 .classpath
 *.launch
 .settings/
-.vscode
+/.vscode
 
 # System Files
 .DS_Store
@@ -22,5 +22,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # tmp
-data
+/data
+/pentagon-entry
 .env
