@@ -47,8 +47,18 @@ async function execHander (cmd,cwd = repo) {
   })
 }
 
+function values (object) {
+  let v = []
+  let k = []
+  for (let k in object) {
+    k.push(k)
+    v.push(object[k])
+  }
+  return {v,k}
+}
 
 
+exports.values = values
 exports.readFiles = readFiles
 exports.execSync = execHander
 exports.parseManifest = parseManifest

@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-const {parseManifest, createManifest, writeManifest} = require('../lib/utils')
+const {parseManifest, createManifest, writeManifest, values} = require('../lib/utils')
 const {server, repo} = require('../config')
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
@@ -80,7 +80,7 @@ module.exports = {
     await exec('git add ./', option)
     console.log('adde completed')
     // commit and push
-    await exec(`git commit -m "add ${manifest.values().join(',')}"`, option)
+    await exec(`git commit -m "add ${values(manifest).v.join(',')}"`, option)
     console.log('commit completed')
     // push
     await exec('git push origin dev-icon', option)
