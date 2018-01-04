@@ -18,7 +18,7 @@ module.exports = {
   },
   server: {
     port: normalizePort(_.defaultTo(process.env.PORT, 3000)),
-    host: _.defaultTo(process.env.HOST, 'localhost'),
+    host: _.defaultTo(process.env.HOST, '0.0.0.0'),
     root: ROOT,
     data: path.join(ROOT, '../', '/data'),
     view: path.join(ROOT, '/views'),
