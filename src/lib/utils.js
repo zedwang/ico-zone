@@ -48,13 +48,13 @@ async function execHander (cmd,cwd = repo) {
 }
 
 function values (object) {
-  let v = []
-  let k = []
+  let values = []
+  let keys = []
   for (let k in object) {
-    k.push(k)
-    v.push(object[k])
+    keys.push(k)
+    values.push(object[k])
   }
-  return {v,k}
+  return {values,keys}
 }
 
 

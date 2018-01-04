@@ -80,7 +80,7 @@ module.exports = {
     await exec('git add ./', option)
     console.log('adde completed')
     // commit and push
-    await exec(`git commit -m "add ${values(manifest).v.join(',')}"`, option)
+    await exec(`git commit -m "add ${values(manifest).values.join(',')}"`, option)
     console.log('commit completed')
     // push
     await exec('git push origin dev-icon', option)
