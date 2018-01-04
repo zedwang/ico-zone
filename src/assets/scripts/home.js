@@ -50,7 +50,7 @@ $(function () {
     if (valid(ids)) {
       var $btn = $(this).button('loading')
       doPush(ids)
-      alert('亲，这个操作时间比较长，请耐心等待！')
+      $('#alert').html('亲，这个操作时间比较长，请耐心等待！').show()
     }
     
   })
@@ -58,7 +58,7 @@ $(function () {
 })
 function valid(data) {
   if (!data.length) {
-    alert('囧，我不知道你在做什么，请先选择一个或多个图标')
+    $('#alert').html('亲，这个操作时间比较长，请耐心等待！').show()
     return false;
   }
   return true

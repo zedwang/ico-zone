@@ -41,6 +41,7 @@ module.exports = {
     const manifest = parseManifest()
     const REPO = path.join(server.root, '../','pentagon-entry')
     const option = {cwd: REPO}
+    let tmp = []
     
     // clone
     if (!fs.existsSync(REPO)) {
@@ -61,6 +62,7 @@ module.exports = {
       if (!svg) {
         return console.error('file hash-value not written to the mainifest.json')
       }
+      tmp.push(svg)
       const src = path.join(server.data, `${id}.svg`)
       const target = path.join(REPO, `component/icon/svg/`)
       const cmd = `cp ${src} ${target}`
@@ -80,10 +82,12 @@ module.exports = {
     await exec('git add ./', option)
     console.log('adde completed')
     // commit and push
-    await exec(`git commit -m "add ${values(manifest).values.join(',')}"`, option)
+    await exec(`git commit -m "add ${tmp.join(',')}"`, option)
     console.log('commit completed')
     // push
-    await exec('git push origin dev-icon', option)
+    const {stdout, stderr} = await exec('git push origin dev-icon', option)
+    console.log(stdout)
+    console.log(stderr)
     console.log('push completed')
     // unlink file
     ids.forEach(id => {
