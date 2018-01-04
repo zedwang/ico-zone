@@ -54,11 +54,16 @@ module.exports = {
     for (let i = 0; i < ids.length; i++) {
       let id = ids[i]
       const svg = manifest[id]
-      const cmd = `cp ${process.cwd()}/data/${id}.svg ${process.cwd()}/pentagon-entry/component/icon/svg/`
+      const src = path.join(REPO, `/data/${id}.svg`)
+      const target = path.join(REPO, `component/icon/svg/`)
+      const cmd = `cp ${src} ${target}`
+      console.log('copy cmd:', cmd)
       await exec(cmd, option)
       // rename
-      const before = `${process.cwd()}/pentagon-entry/component/icon/svg/${id}.svg`
-      const after = `${process.cwd()}/pentagon-entry/component/icon/svg/${svg}`
+      const before = path.join(REPO, `component/icon/svg/${id}.svg`)
+      const after = path.join(REPO, `component/icon/svg/${svg}`)
+      console.log('rename before:', before)
+      console.log('rename after:', after)
       fs.renameSync(before, after)
     }
 
@@ -67,7 +72,6 @@ module.exports = {
     console.log('add files to git')
     await exec('git add ./', option)
     console.log('adde completed')
-    console.log('add files to git')
     // commit and push
     await exec('git commit -m "add icon svg"', option)
     console.log('commit completed')
